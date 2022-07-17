@@ -1,8 +1,5 @@
 package client.view;
-
-import client.dao.UserDao;
 import client.model.User;
-
 import java.awt.EventQueue;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -74,7 +71,6 @@ public class TopFrame extends JFrame {
 
         JButton registerbtn = new JButton("注册");
         registerbtn.addActionListener(new ActionListener() {
-            @Override
             public void actionPerformed(ActionEvent e) {
                 regButton(e);
 
@@ -100,28 +96,13 @@ public class TopFrame extends JFrame {
 
     //登录按钮
     private void loginButton(ActionEvent e) {
+
         String name = this.userName.getText();
         String password =  new String(userPassword.getPassword());
         User user = new User(name, password);
-        /*
-        UserDao userDao = new UserDao();
-        User user = userDao.selectUser(name, password);
-
-        if(user==null) {
-            JOptionPane.showMessageDialog(this, "用户名或密码错误");
-            return;
-        }
-        else
-
-        {
-
-         */
-            IndexFrame indexFrame =  new IndexFrame(user);
-            indexFrame.setVisible(true);
-            this.dispose();
-
-       // }
-
+        IndexFrame indexFrame =  new IndexFrame(user);
+        indexFrame.setVisible(true);
+        this.dispose();
     }
 
     //注册按钮

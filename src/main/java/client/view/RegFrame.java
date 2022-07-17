@@ -1,7 +1,4 @@
 package client.view;
-import client.dao.UserDao;
-import client.util.StrUtil;
-
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -58,7 +55,6 @@ public class RegFrame extends JFrame {
 
         JButton btnreturn = new JButton("返回");
         btnreturn.addActionListener(new ActionListener() {
-            @Override
             public void actionPerformed(ActionEvent e) {
                 returnButton(e);
 
@@ -98,30 +94,7 @@ public class RegFrame extends JFrame {
 
     //注册按钮
     private void regButton(ActionEvent e) {
-        String name = this.userNameTxt.getText();
-        String password= new String(passwordTxt.getPassword());
-        String againPassword = new String(rePasswordTxt.getPassword());
-        if (StrUtil.isEmpty(name)) {
-            JOptionPane.showMessageDialog(this, "请输入用户名");
-            return;
-        } else if (StrUtil.isEmpty(password)) {
-            JOptionPane.showMessageDialog(this, "请输入密码");
-            return;
-        } else if (StrUtil.isEmpty(againPassword)) {
-            JOptionPane.showMessageDialog(this, "请确认密码");
-            return;
-        } else if (!password.equals(againPassword)) {
-            JOptionPane.showMessageDialog(this, "两次密码不相同");
-            return;
-        } else {
-            UserDao usedao = new UserDao();
-            JOptionPane.showMessageDialog(this, usedao.Register(name, password));
-            this.setVisible(false);
-            TopFrame topFrame = new TopFrame();
-            topFrame.setVisible(true);
-            return;
 
-        }
     }
 
 
